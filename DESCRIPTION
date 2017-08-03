@@ -10,6 +10,6 @@ Description: Routines to generate synthetics data from (possibly large
     for technical tests or preliminary statistical analyses. The
     fabricated data is generated from empirical 1-N dimensional 
     cumulative distributions derived from the user-supplied real data.
-License: MIT + file LICENCE
+License: MIT
 RoxygenNote: 6.0.1
 Imports: data.table
