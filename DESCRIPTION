@@ -1,0 +1,15 @@
+Package: synergetr
+Type: Package
+Title: Synthetic Data Generation
+Version: 0.8.0
+Date: 2017-08-01
+Author: Arho Virkki
+Maintainer: <arho.virkki@tyks.fi>
+Description: Routines to generate synthetics data from (possibly large
+    amounts of) existing sensitive data which cannot be distributed
+    for technical tests or preliminary statistical analyses. The
+    fabricated data is generated from empirical 1-N dimensional 
+    cumulative distributions derived from the user-supplied real data.
+License: MIT + file LICENCE
+RoxygenNote: 6.0.1
+Imports: data.table
