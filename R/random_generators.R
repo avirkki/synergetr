@@ -182,6 +182,53 @@ rpid <- function( yearString=NA, size=length(yearString) ) {
   return(paste0(dayString,monthString,yearString,suffix))
 }
 
+#' Generate random numbers
+#'
+#' A Wrapper to R random number generators that follows the same
+#' semantics as the other data generating functions.
+#'
+#' @details The function can be used to call R random number
+#' generators like \code{\link[stats]{runif}},
+#' \code{\link[stats]{rnorm}}, \code{\link[stats]{rpois}}, etc. that
+#' accept 'n' as the number of values to be generated. The unnamed
+#' arguments are passed to these functions. Examples illustrate best
+#' the usage of this function.
+#' 
+#' @param fun Function to be called
+#' @param cols Column name
+#' @param size Number of rows to be generated
+#' @param integers Coerce the results to integers (using
+#'        \code{\link[base]{floor}})
+#' @param lower Lower limit
+#' @param upper Upper limit
+#' @examples
+#' rnumeric(runif, "dot_count", 10, integers=TRUE, min=5, max=15)
+#' rnumeric(rnorm, "root_lenght", 10, mean=30, sd=5)
+#' rnumeric(rpois, "visit_time_min", 10, lower=10, lambda=20)
+#'
+#' @export
+rnumeric <- function(fun=runif, cols, size, integers=FALSE, 
+                     lower=NA, upper=NA, ... ) {
+ 
+  if( integers ) {
+    x <- floor(fun( n=size, ... )) 
+  } else {
+    x <- fun( n=size, ... )
+  }
+  if( !is.na(lower) ) {
+    x <- pmax( x, lower )
+  }
+  if( !is.na(upper) ) {
+    x <- pmin( x, upper )
+  }
+
+  res <- data.frame( x )
+  colnames(res) <- cols
+
+  return( res )
+}
+
+
 #' Generate constant column
 #' 
 #' Repeat a constant value for a column
