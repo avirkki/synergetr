@@ -19,7 +19,7 @@ plotCatDist <- function( tbl, cols, hlp=0.5, ntop=10, ... ) {
   
   cnt <- getCounts( tbl, cols, ... ) 
   n <- nrow(cnt)
-  datasize <- sum(cnt$n)
+  datasize <- sum(cnt$N)
 
   npoints <- round(n*hlp/100)
   x <- (1:n)/n*100
